@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "FertilityGarden-realm",
+    "slug": "FertilityGarden-realm",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.anonymous.FertilityGarden-realm"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "scheme": "app-with-realm"
+  }
+}
