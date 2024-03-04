@@ -1,0 +1,82 @@
+{
+  "topics" : [
+    {
+    "id": 2,
+    "title": "Ovulation",
+    "description": "The star of the show! Let's figure out when during your cycle you can get pregnant.",
+    "checklistItems": [
+      {
+        "id": 1,
+        "title": "Getting off of BC",
+        "modalContent": {
+          "id": 1,
+          "content": "Most Birth control suppresses ovulation."
+        }
+      },
+      {
+        "id": 2,
+        "title": "Tracking periods",
+        "modalContent": {
+          "id": 2,
+          "content": "Get to know your fertile window! This is the most important one. Conception can only happen during your fertile window - 5 days before, day of ovulation, and up to 5 days after you ovulate. Talk to RosaGPT to discover which of the many options out there might work best for you."
+        }
+      },
+      {
+        "id": 3,
+        "title": "Liver loving activities",
+        "modalContent": {
+          "id": 3,
+          "content": "Support your liver after coming off of BC because BC does tax your liver. Liver detox requires a lot of nutrients and we want to support your body in this - you can do this very cheaply or for free such as: dry brushing, sweating, sweating in a sauna and more. Talk to RosaGPT to find some practices that will work best for you."
+        }
+      },
+      {
+        "id": 4,
+        "title": "If 6 months before TTC, consider prenatal",
+        "modalContent": {
+          "id": 4,
+          "content": "BC depletes nutrients, let's build back up. ALSO want to have good nutrient status to grow a baby!"
+        }
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Nutrition",
+    "description": "Simple Preconception Diet focuses on two things: Blood sugar balance and anti-inflammatory foods.",
+    "checklistItems": [
+      {
+        "id": 1,
+        "title": "Blood sugar balance: eat consistently 3-5 hours",
+        "modalContent": {
+          "id": 1,
+          "content": "Why blood sugar balance is important to fertility cortisol, insulin egg quality etc"
+        }
+      },
+      {
+        "id": 2,
+        "title": "Blood sugar balance: eat breakfast, 30 mins waking",
+        "modalContent": {
+          "id": 2,
+          "content": "Why blood sugar balance is important to fertility cortisol, insulin egg quality"
+        }
+      },
+      {
+        "id": 3,
+        "title": "Half plate veggies. ¼ plate quality protein, ¼ plate complex carbohydrate foods. Serving of healthy fat. ",
+        "modalContent": {
+          "id": 3,
+          "content": "Eating this way will provide you with all the necessary nutrients you need. RosaGPT can share some simple meal plans with you if you need some help getting started."
+        }
+      },
+      {
+        "id": 4,
+        "title": "Add in Anti-inflammatory foods every week.",
+        "modalContent": {
+          "id": 4,
+          "content": "for a healthy diet and healthy preconception, include a few servings a week: fermented foods, nuts, vitamin A rich foods like liver and fish eggs, omega-3 rich foods like fatty fish, chicken or beef stock."
+        }
+      }
+    ]
+  }
+]
+}
