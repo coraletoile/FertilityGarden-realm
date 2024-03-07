@@ -1,10 +1,12 @@
-import { View, Text, Button, StyleSheet } from 'react-native'
-import React, { useState } from 'react'
+import { View, Text, Button, StyleSheet, TextInput, TouchableOpacity} from 'react-native'
+import React, { useRef, useState } from 'react'
 import { Stack, useGlobalSearchParams, useRouter, Link } from 'expo-router'
 import { CustomModal } from './_modal';  // Adjust path as necessary
 import Checkbox  from 'expo-checkbox';
 import topicsData from '../data/topicsData.json';
 import  { useChecklistStore } from '../stores/store'
+import { useQuery,useRealm } from '@realm/react';
+import { BSON } from 'realm';
 
 const Flower = () => {
   const [isModalVisible, setModalVisible] = useState(false);
@@ -19,6 +21,33 @@ const Flower = () => {
   const topicId = Number(id)
   const topic = topicsData.topics.find((topic) => topic.id === Number(id));
 console.log(id)
+
+//playing with realm
+  const realm = useRealm()
+  //const [inputVal, setInputVal]= useState('')
+  const descriptionRef = useRef()
+  const tasks = useQuery("Task")
+
+  const addTask = () => {
+    realm.write(() => {
+      const newTask = realm.create("Task", {
+        _id: new BSON.ObjectId(),
+        description: descriptionRef.current,
+        createdAt: new Date(), // Set the date when creating the object
+        isComplete: false,
+        userId:"test",
+      })
+      
+      // clear input field
+      //descriptionRef.current = ""
+      //setInputVal('')
+
+      // return Task
+      return newTask
+
+    });
+
+  }
   return (
     
     // note topicId below in toggleItem, that is from params. item.id is from JSON object required in.
@@ -46,6 +75,36 @@ console.log(id)
           content={topic?.checklistItems.find(item => item.id === selectedChecklistId)?.modalContent.content}
         />
       )}
+      <View>
+        <TextInput 
+        placeholder="Enter New Task"
+        autoCapitalize='none'
+        nativeID="description"
+        multiline={true}
+        numberOfLines= {8}
+        value={descriptionRef.current}
+        onChangeText={(text) => {
+          descriptionRef.current= text
+        }}
+        style={styles.textInput}
+        
+        
+        />
+        {/* button to save the new task */}
+        <TouchableOpacity 
+          style= {styles.button} 
+          onPress={() => {
+            addTask()
+            
+
+          }}>
+            <Text> Save Task </Text>
+          
+        </TouchableOpacity>
+        <Text> {JSON.stringify(tasks)}</Text>
+
+      </View>
+      
     </View>
   );
 };
@@ -62,6 +121,35 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 8,
+  },
+  title: {
+    fontSize: 18,
+    margin: 16,
+    fontWeight: "700",
+  },
+  label: {
+    marginBottom: 8,
+    fontSize: 18,
+    fontWeight: "500",
+    // color: "#455fff",
+  },
+  textInput: {
+    fontSize: 20,
+    borderWidth: 1,
+    borderRadius: 4,
+    // borderColor: "#455fff",
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    marginBottom: 0,
+    marginHorizontal: 16,
+  },
+  button: {
+    backgroundColor: "grey",
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 8,
+    marginLeft: 16,
+    width: 120,
   },
 });
 

@@ -1,10 +1,12 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { RealmProvider } from '@realm/react';
 import { useFonts } from 'expo-font';
 import { Stack, useRouter } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { Button } from 'react-native';
+import { Task } from './Task';
 
 
 
@@ -51,6 +53,7 @@ function RootLayoutNav() {
 
 
   return (
+    <RealmProvider schema={[Task]} >
     
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
@@ -59,6 +62,7 @@ function RootLayoutNav() {
         
 
       </Stack>
+      </RealmProvider>
  
   );
 }
