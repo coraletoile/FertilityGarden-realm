@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware'
 
 // Define the state shape with an interface
 interface ChecklistState {
@@ -7,7 +8,9 @@ interface ChecklistState {
 }
 
 // Use the interface to type the store's state and actions
-export const useChecklistStore = create<ChecklistState>((set) => ({
+export const useChecklistStore = create<ChecklistState>()(
+  persist(
+  (set) => ({
   checkedStates: {},
   toggleItem: (topicId: number, itemId: number) => set((state) => ({
     checkedStates: {
@@ -15,5 +18,5 @@ export const useChecklistStore = create<ChecklistState>((set) => ({
       [`${topicId}-${itemId}`]: !state.checkedStates[`${topicId}-${itemId}`],
     },
   })),
-}));
+}), {name: 'checklistStorage'}));
 
